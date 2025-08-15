@@ -21,7 +21,9 @@ uploaded_file = st.file_uploader("Choose a kidney image", type=['jpg', 'jpeg', '
 
 if uploaded_file is not None:
 
-    img = Image.open(uploaded_file).convert('RGB')
+    img = Image.open(uploaded_file)
+    if img.mode != "RGB":
+        img = img.convert("RGB")
     st.image(img, caption='Uploaded Image', use_column_width=True)
 
  
